@@ -1,0 +1,40 @@
+.card-title {
+    color: rgb(170, 170, 61);
+    height: 45px;
+    text-align: start;
+
+}
+
+.card-body {
+    height: 180px;
+}
+
+.btnone {
+    width: fit-content;
+    font-size: 15px;
+    border: 1px black;
+    height: 25px;
+}
+
+.btntwo {
+    font-size: 15px;
+    float: right;
+    color: rgb(209, 38, 38);
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0.818);
+    border: 1px solid rgb(196, 56, 56);
+    border-radius: 4px;
+}
+
+.card-text {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    margin: 0px;
+}
+
+h5 {
+    text-align: center;
+}

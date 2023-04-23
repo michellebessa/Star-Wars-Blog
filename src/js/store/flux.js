@@ -1,45 +1,76 @@
-const getState = ({ getStore, getActions, setStore }) => {
+const getState = ({ getStore, setStore }) => {
 	return {
-		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+	  store: {
+		message: null,
+		people: [],
+		planets: [],
+		starships: [],
+		favorites: [],
+	  },
+	  actions: {
+		// Use getActions to call a function within a fuction
+  
+		getMessage: async () => {
+		  try {
+			// fetching data from the backend
+			const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
+			const data = await resp.json();
+			setStore({ message: data.message });
+			return data;
+		  } catch (error) {
+			console.log("Error loading message from backend", error);
+		  }
 		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
-		}
+  
+		getPeople: () => {
+		  fetch("https://swapi.dev/api/people", {
+			method: "GET",
+			headers: { "Content-Type": "application/json" },
+		  })
+			.then((res) => res.json())
+			.then((data) => setStore({ people: data }))
+			.catch((err) => console.error(err));
+		},
+  
+		getPlanets: () => {
+		  fetch("https://swapi.dev/api/planets", {
+			method: "GET",
+			headers: { "Content-Type": "application/json" },
+		  })
+			.then((res) => res.json())
+			.then((data) => setStore({ planets: data }))
+			.catch((err) => console.error(err));
+		},
+		getStarships: () => {
+		  fetch("https://swapi.dev/api/starships", {
+			method: "GET",
+			headers: { "Content-Type": "application/json" },
+		  })
+			.then((res) => res.json())
+			.then((data) => setStore({ starships: data }))
+			.catch((err) => console.error(err));
+		},
+  
+		setFavorite: (favoritesitem) => {
+		  const store = getStore();
+		  const favorites = store.favorites;
+		  setStore({ favorites: [...favorites, favoritesitem] });
+		},
+  
+		deleteFavorite: (favoritesitem) => {
+		  const store = getStore();
+		  const favorites = store.favorites.filter(
+			(item) => item != favoritesitem
+		  );
+		  setStore({ favorites: [...favorites] });
+		},
+  
+		changeColor: (index, color) => {
+		  //get the store
+		  const store = getStore();
+		},
+	  },
 	};
-};
-
-export default getState;
+  };
+  
+  export default getState;

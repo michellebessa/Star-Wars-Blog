@@ -1,0 +1,26 @@
+.logo {
+    margin-left: 6%;
+    width: 15%;
+}
+
+.dropdown {
+    margin-left: 15%;
+    float: right;
+    margin-top: 2%;
+}
+
+.navbar {
+    margin: 0px;
+    background-color: black;
+}
+
+.favoritescircle {
+    width: 70px;
+    height: 50px;
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.trash {
+    font-size: 12px;
+}

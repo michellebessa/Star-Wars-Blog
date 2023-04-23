@@ -1,0 +1,9 @@
+.starshipsrow {
+    margin: 0px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 5px;
+}
+.starshipsrow .col-2 {
+    margin-left: -5px;
+}
