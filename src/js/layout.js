@@ -7,9 +7,9 @@ import { StarshipsPage } from "./pages/starships-page";
 import { Characters } from "./pages/characters";
 import { Planets } from "./pages/planets";
 import { Starships } from "./pages/starships";
-import injectContext from "./store/appContext";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
+import injectContext from "./store/appContext";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
